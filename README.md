@@ -1,2 +1,2 @@
 # flask_app
- creating flask web api
+ creating flask web api for loan price prediction.
