@@ -1,0 +1,29 @@
+name: First CI tests
+
+on:
+  push:
+    branches:
+      - pytest
+
+
+jobs:
+  
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # v4 is the version of the action we're using, not the branch of the code; https://github.com/actions/checkout 
+        # purpose of checkout code is to get the code from the repository, and put it in the runner machine
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: |
+          pytest
